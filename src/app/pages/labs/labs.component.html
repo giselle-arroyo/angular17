@@ -1,4 +1,5 @@
-<h1>Hola perros</h1>
+<div class="container">
+  <h1>Hola perros</h1>
 <h2>{{welcome}}</h2>
 <ul>
   <li *ngFor="let task of tasks">
@@ -10,8 +11,15 @@
 <p> la suma es 3+3 es {{ 3+3 }}</p>
 <p> Hi, I'm {{ name }} & I have {{ age }} years old</p>
 <hr   />
-<!-- Property Binding: [] Es la manera que dispone Angular para controlar y modificar las propiedades de los distintos elementos de HTML. Para esto, simplemente utiliza los corchetes [] para poder modificar dinámicamente ese atributo desde el controlador.  -->
+<!-- Property Binding: [] It's the way Angular provides to control and modify the properties of different HTML elements. For this, it simply uses brackets [] to dynamically modify that attribute from the controller.  -->
 <img [src]="person.avatar" alt="">
-<input type="text" [value]="person.age">
+<input type="number" [value]="person.age">
 <button [disabled]="disabled">Click me</button>
 <p>person: {{ person.name }}</p>
+<hr  >
+<!-- Event Binding : () t allows controlling the events that occur in these elements. For example, the click of a button, detecting changes in a field, submitting a form, among other events. For this, it uses parentheses () to bind the property of the element.-->
+<button (click)="clickHandler()"> Click me! </button>
+<button (dblclick)="clickHandler()"> Double Click me! </button>
+<p>(change)</p>
+<input type="number" [value]="person.age" (change)="changeHandler($event)">
+</div>
