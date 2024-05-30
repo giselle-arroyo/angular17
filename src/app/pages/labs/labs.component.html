@@ -9,3 +9,9 @@
 <h2>{{  'Hola'.repeat(4) }}</h2>
 <p> la suma es 3+3 es {{ 3+3 }}</p>
 <p> Hi, I'm {{ name }} & I have {{ age }} years old</p>
+<hr   />
+<!-- Property Binding: [] Es la manera que dispone Angular para controlar y modificar las propiedades de los distintos elementos de HTML. Para esto, simplemente utiliza los corchetes [] para poder modificar dinámicamente ese atributo desde el controlador.  -->
+<img [src]="person.avatar" alt="">
+<input type="text" [value]="person.age">
+<button [disabled]="disabled">Click me</button>
+<p>person: {{ person.name }}</p>
