@@ -12,22 +12,22 @@
 <p> Hi, I'm {{ name() }} & I have {{ age }} years old</p>
 <hr   />
 <!-- Property Binding: [] It's the way Angular provides to control and modify the properties of different HTML elements. For this, it simply uses brackets [] to dynamically modify that attribute from the controller.  -->
-<img [src]="person.avatar" alt="">
-<input type="number" [value]="person.age">
+<img [src]="person().avatar" alt="">
+<input type="number" [value]="person().age">
 <button [disabled]="disabled">Click me</button>
-<p>person: {{ person.name }}</p>
+<p>person: {{ person().name }}</p>
 <hr  >
 <!-- Event Binding : () t allows controlling the events that occur in these elements. For example, the click of a button, detecting changes in a field, submitting a form, among other events. For this, it uses parentheses () to bind the property of the element.-->
 <button (click)="clickHandler()"> Click me! </button>
 <button (dblclick)="clickHandler()"> Double Click me! </button>
 <p>(change)</p>
-<input type="number" [value]="person.age" (change)="changeHandler($event)">
+<input type="number" [value]="person().age" (change)="changeHandler($event)">
 <p>(change)</p>
-<input type="text" [value]="person.name" (change)="changeHandler($event)">
+<input type="text" [value]="person().name" (change)="changeHandler($event)">
 <p>(keydown)</p>
-<input type="text" [value]="person.name" (keydown)="keydownHandler($event)">
+<input type="text" [value]="person().name" (keydown)="keydownHandler($event)">
 <p>(keydown enter)</p>
-<input type="text" [value]="person.name" (keydown.enter)="clickHandler()">
+<input type="text" [value]="person().name" (keydown.enter)="clickHandler()">
 <hr />
 <h1>Signals</h1>
 <input type="text" [value]="name()" (change)="changeHandler($event)">
@@ -39,4 +39,14 @@
     {{ i }} {{ task }}
   </li>
 </ul>
+<input type="number" [value]="person().age" (change)="changeAge($event)">
+<div *ngIf="1 !== 1">
+  My content 
+</div>
+<div *ngIf="person().name === 'Giselle' $$ person().age > 32; else elseBlock">
+  Giselle
+</div>
+<ng-template #elseBlock>
+  Giselle menor que 32
+</ng-template>
 </div>
