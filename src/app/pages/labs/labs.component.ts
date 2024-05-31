@@ -1,23 +1,22 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import {signal} from '@angular/core';
 
 @Component({
   selector: 'app-labs',
   standalone: true,
-  imports: [RouterModule, CommonModule],
+  imports: [CommonModule],
   templateUrl: './labs.component.html',
   styleUrl: './labs.component.css'
 })
 
 export class LabsComponent {
   welcome = 'Hello';
-  tasks = [
+  tasks = signal([
     'Install angular',
     'Create project',
     'Create components'
-  ];
+  ]);
   name=signal('Giselle');
   age=32;
   disabled=true;
