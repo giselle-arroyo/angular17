@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import {signal} from '@angular/core';
 
 @Component({
   selector: 'app-labs',
@@ -17,7 +18,7 @@ export class LabsComponent {
     'Create project',
     'Create components'
   ];
-  name='Giselle';
+  name=signal('Giselle');
   age=32;
   disabled=true;
   img='https://w3schools.com/howto/img_avatar.png';
@@ -33,7 +34,9 @@ export class LabsComponent {
   }
 
   changeHandler(event : Event){
-  console.log(event)
+    const input = event.target as HTMLInputElement;
+    const newValue=input.value
+    this.name.set(newValue)
   }
 
   keydownHandler(event: KeyboardEvent){
