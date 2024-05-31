@@ -30,6 +30,9 @@ export class LabsComponent {
   })
 
   colorControl = new FormControl();
+  widthControl = new FormControl(50,{
+    nonNullable : true,
+  });
 
   constructor(){
     //Reading the value using logic
