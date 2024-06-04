@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {signal} from '@angular/core';
-import { FormControl, ReactiveFormsModule } from '@angular/forms'
+import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-labs',
@@ -33,6 +33,14 @@ export class LabsComponent {
   widthControl = new FormControl(50,{
     nonNullable : true,
   });
+
+  nameControl = new FormControl('Giselle',{
+    nonNullable : true,
+    validators :[
+      Validators.required,
+      Validators.minLength(3),
+    ]
+  })
 
   constructor(){
     //Reading the value using logic
