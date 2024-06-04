@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Task } from '../models/task.model'
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms'
@@ -31,6 +31,23 @@ export class HomeComponent {
       Validators.required,
     ]
   });
+//Set default states to manage
+  filter = signal <'all' | 'pending' | 'completed' > ('all');
+
+  //every time change something,this funtion is going to be execute it
+  tasksByFilter = computed(() => {
+    const filter = this.filter();
+    const tasks=this.tasks();
+
+    if(filter === 'pending'){
+      return tasks.filter(task => !task.completed)
+    }
+    else if(filter === 'completed'){
+      return tasks.filter(task => task.completed)
+    }
+    return tasks;
+
+  })
 
   changeHandler(){
     if(this.newTaskControl.valid){
@@ -104,6 +121,11 @@ export class HomeComponent {
         }
       })
      })
+  }
+
+  changeFilter(filter: 'all' | 'pending' | 'completed'){
+    this.filter.set(filter);
+
   }
 
 }
