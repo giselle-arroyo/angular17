@@ -70,7 +70,40 @@ export class HomeComponent {
       }
     })
    })
+  }
+  editingMode(index: number){
+    this.tasks.update((state) => {
+      return state.map((state, position) =>{
+        if(position === index){
+          return{
+            ...state,
+            editing:true
+          }
+        }else{
+          return {
+            ...state,
+            editing:false
+          };
+        }
+      })
+     })
+  }
 
+  updateTaskText(index: number, event: Event){
+    const input=event.target as HTMLInputElement;
+    this.tasks.update((state) => {
+      return state.map((state, position) =>{
+        if(position === index){
+          return{
+            ...state,
+            title: input.value,
+            editing: false
+          }
+        }else{
+          return state;
+        }
+      })
+     })
   }
 
 }
